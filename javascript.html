@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+</head>
+
+<body>
+    <img src="Cookie-New-01-scaled - Copy.jpg" width=150px onclick="addScore()">
+    <div id="scoreBox">0</div>
+    <button onclick="buyMulti()">Buy Upgrade</button>
+    <button onclick="buyAutoclick()">Buy Autoclick</button>
+</body>
+
+<script>
+    var name = prompt("what is sigmas name?");
+    name = name.toLowerCase()
+    if (name == "sigma") {
+        document.write("whatup sigma rizzlord")
+    } else {
+        document.write("hello " + name + "!");
+    }
+
+    var score = 0;
+    var multiplier = 1.0;
+    var autoclickamount = 0;
+    var scoreBox = document.getElementById("scoreBox")
+
+    function addScore() {
+        score = score + multiplier;
+        scoreBox.innerHTML = score;
+    }
+
+    function buyMulti() {
+        if (score >= (multiplier * 10)) {
+            score = score - (multiplier * 10)
+            multiplier = multiplier + 0.1;
+            scoreBox.innerHTML = score;
+        }
+    }
+
+    function buyAutoclick() {
+        if (autoclickamount == 0) {
+            score = score - (autoclickamount * 10)
+            autoclickamount = 1;
+            setInterval(
+                () => {
+                    score = score + autoclickamount;
+                    scoreBox.innerHTML = score;
+                },
+                1000
+            )
+        }
+        else {
+score = score - (autoclickamount * 10)
+        autoclickamount = autoclickamount + 1;
+        scoreBox.innerHTML = score;
+        }
+        
+
+    }
+
+
+</script>
+
+</html>
